@@ -1,0 +1,65 @@
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+html,body{
+color:white;
+  font-family:'Opens Sans',helvetica;  
+  height:100%;
+  width:100%;
+  margin: 0px;
+}*/
+
+#desarrollofrontend{
+	padding: 10px 0px 10px 0px;
+    background: rgba(0,0,0,0.5);
+	color: #00bdff;
+	width: 100%;
+  text-align:center;
+ font-size:1.3em; 
+}
+
+#desarrollofrontend a{
+	padding: 1000px;
+	border:none;
+    color: white;
+	color: #00bdff;
+	text-decoration: none;
+    
+}
+#desarrollofrontend2{
+  padding: 10px 0px 10px 0px;
+    background: rgba(0,0,0,0.5);
+  color: #00bdff;
+  width: 100%;
+  text-align:center;
+ font-size:1.3em; 
+}
+
+#desarrollofrontend2 a{
+  padding: 1000px;
+  border:none;
+    color: white;
+  color: #fff;
+  text-decoration: none;
+    
+}
+
+.portada{
+    /*background: url(http://desarrollofrontend.com/wp-content/uploads/2014/11/img_default.png) no-repeat fixed center;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100% ;
+    text-align: center;
+    }
+
+.text{
+  color:white;
+/*  font-family:'Opens Sans',helvetica;  */
+margin: 0px 200px 0px 0px;	
+padding: 5px;
+background: rgba(0,0,0,0.5);
+display: inline-block;
+ width: 100% ;
+}

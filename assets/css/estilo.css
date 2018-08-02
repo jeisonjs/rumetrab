@@ -1,0 +1,61 @@
+/*
+Al cuerpo de la
+pagina se aplica el tamño de fuete
+ */
+body{
+	font-size: 12px;
+}
+/**
+ * se aplica el ancho, margen centrado
+ * borde de un pixel con redondeao, y rellenado
+ * a la izquierda y derecha
+ */
+#Contenedor{
+	width: 500px;
+	margin: 20px auto;
+	background-color: #d2e2f2;
+    border: 2px solid #ECE8E8;
+	/*height: 300px;*/
+	border-radius:8px;
+	padding: 0px 9px 0px 9px;
+}
+.texto {
+
+  color: #2c90c6; 
+  font-size: 30px; 
+  text-align: center;
+  font-family: 'Titan One';   
+  text-shadow: 1px 2px 1px  rgba(0,0,0,.5);
+}
+.textous {
+
+  color: #2c90c6; 
+  font-size: 20px; 
+  text-align: center;
+  font-family: 'Titan One';   
+  text-shadow: 1px 2px 1px  rgba(0,0,0,.5);
+
+}
+
+.opcioncontra{
+	text-align: center;
+	margin-top: 2000px;
+	font-size: 14px;
+}
+
+/******************************************/
+/***    DISEÑO PARA MOVILES 320        ****/
+/******************************************/
+@media only screen and (max-width:320px){
+#Contenedor{
+	width: 100%;
+	height: auto;
+	margin: 0px;
+}
+
+/******************************************/
+/***    DISEÑO PARA MOVILES 240        ****/
+/******************************************/
+@media only screen and (max-width:240px){
+	
+}
