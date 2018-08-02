@@ -29,6 +29,8 @@
        *    <p>Dashboard</p>
        *  </a>
        * </li>
+       * 
+       * @param int $rol_id - Identidicador del rol en la base de datos.
        */
       switch (\App\Controller\Auth\Auth::user()->sys_rol_id) {
         case \App\Models\Rol::ADMINISTRADOR:
