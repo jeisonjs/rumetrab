@@ -169,4 +169,57 @@ class UserController
             'notification' => 'warning'
         ];
     }
+
+    public function registerSessionStart()
+    {
+        // id del usuario actual.
+        $usuario_id = \App\Controller\Auth\Auth::user()->Seq_Usuario;
+
+        $userDao = new \App\Models\Dao\UserDao;
+        $result  = $userDao->registerSessionStart($usuario_id);
+    }
+
+    public function registerSessionFinish()
+    {
+        // id del usuario actual.
+        $usuario_id = \App\Controller\Auth\Auth::user()->Seq_Usuario;
+
+        $userDao    = new \App\Models\Dao\UserDao;
+        $session_id = $userDao->getLastLogin($usuario_id);
+        $result     = $userDao->registerSessionFinish($session_id[0]['id']);
+    }
+
+    public function getUsage($usuario_id)
+    {
+        $session_data = $this->getLastLogin($usuario_id);
+        $fechaInicio  = new \DateTime($session_data['session_start']);
+        $fechaFin     = new \DateTime($session_data['session_finish']);
+
+        return $fechaInicio->format("M j, Y, g:i a") .' - '. $fechaFin->format("M j, Y, g:i a");
+    }
+
+    public function getActivity($usuario_id)
+    {
+        $session_data = $this->getLastLogin($usuario_id);
+        $fechaInicio  = new \DateTime($session_data['session_start']);
+        $fechaFin     = new \DateTime($session_data['session_finish']);
+        $activity     = $fechaInicio->diff($fechaFin);
+
+        return $activity->format("%H:%I:%S");
+    }
+
+    public function getLastLogin($usuario_id)
+    {
+        $userDao      = new \App\Models\Dao\UserDao;
+        $session_data = $userDao->getLastLogin($usuario_id);
+
+        if (empty($session_data)) {
+            return [
+                'session_start'  => date("M j, Y, g:i a"),
+                'session_finish' => date("M j, Y, g:i a")
+            ];
+        } else {
+            return $session_data[0];
+        }
+    }
 }

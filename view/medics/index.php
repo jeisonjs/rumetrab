@@ -59,6 +59,7 @@
                           <td><?php echo $r->Fecha_Nacimiento; ?></td>
                           <td><?php echo $r->Sexo == 1 ? 'Masculino' : 'Femenino'; ?></td>
                           <td><?php echo $r->FechaRegistro_Servidor; ?></td>
+                          <?php if(\App\Controller\Auth\Auth::user()->sys_rol_id != \App\Models\Rol::USUARIO): ?>
                           <td style="width:80px;" align="right" >
                             <a href="?c=Registro&a=Editar&Seq_Registro=<?php echo $r->Seq_Registro; ?>">
                               <img src="imagenes/edit.png">Editar
@@ -69,6 +70,7 @@
                               <img src="imagenes/print.png">Mostrar Matricula
                             </a>
                           </td>
+                          <?php endif; ?>
                           <!--<td>
                             <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Alumno&a=Eliminar&id=<?php echo $r->id; ?>">Eliminar</a>
                           </td>-->

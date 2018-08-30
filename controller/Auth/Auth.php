@@ -12,7 +12,7 @@ abstract class Auth
      * Retorna una nueva instancia de la clase User con los datos
      * del usuario que ha iniciado sesión.
      * 
-     * Use: \App\Controller\AuthAuth::user()->Seq_Usuario
+     * Use: \App\Controller\Auth\Auth::user()->Seq_Usuario
      *
      * @return \App\Models\User
      */

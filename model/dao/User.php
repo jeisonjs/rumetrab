@@ -197,4 +197,87 @@ class UserDao
             return false;
         }
     }
+
+    public function registerSessionStart($usuario_id)
+    {
+        $query = "
+            INSERT INTO sys_auditoria_usuario(usuario_id, session_start) VALUES 
+            (:usuario_id, NOW());
+        ";
+
+		// Prepare query.
+        $stmt = $this->connection->prepare( $query );
+
+        // Sanitize.
+        $usuario_id = htmlspecialchars(strip_tags($usuario_id));
+
+        // Asignando los valores que requiere el query.
+        $stmt->bindParam(':usuario_id', $usuario_id, \PDO::PARAM_INT);
+
+        
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function registerSessionFinish($session_id)
+    {
+        $query = "
+            UPDATE sys_auditoria_usuario SET session_finish = NOW()
+            WHERE id = :session_id;
+        ";
+        
+		// Prepare query.
+        $stmt = $this->connection->prepare( $query );
+
+        // Sanitize.
+        $session_id = htmlspecialchars(strip_tags($session_id));
+        
+        // Asignando los valores que requiere el query.
+        $stmt->bindParam(':session_id', $session_id, \PDO::PARAM_INT);
+
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+ 
+    public function getLastLogin($usuario_id)
+    {
+        if ($usuario_id == \App\Controller\Auth\Auth::user()->Seq_Usuario) {
+            $query = "
+                SELECT id, session_start, session_finish 
+                FROM sys_auditoria_usuario 
+                WHERE usuario_id = :usuario_id
+                ORDER BY id DESC
+                LIMIT 1, 1;
+            ";
+        } else {
+            $query = "
+                SELECT id, session_start, session_finish 
+                FROM sys_auditoria_usuario 
+                WHERE usuario_id = :usuario_id
+                ORDER BY id DESC
+                LIMIT 0, 1;
+            ";
+        }
+
+        // Prepare query.
+        $stmt = $this->connection->prepare( $query );
+
+        // Sanitize.
+        $usuario_id = htmlspecialchars(strip_tags($usuario_id));
+
+        // Asignando los valores que requiere el query.
+        $stmt->bindParam(':usuario_id', $usuario_id,  \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        
+        return $result;
+    }
 }

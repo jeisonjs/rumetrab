@@ -34,7 +34,7 @@
                         <label>Nombre de usuario</label>
                         <input type="hidden" name="Seq_Usuario" 
                           value="<?php echo isset($user->Seq_Usuario) ? $user->Seq_Usuario : 0 ; ?>">
-                        <input type="text" name="username" class="form-control" placeholder="michael23" required>
+                        <input type="text" name="username" class="form-control" required>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -86,17 +86,38 @@
                     <thead class=" text-primary">
                       <th >Nro.</th>
                       <th>Usuario</th>
-                      <th>Tipo</th>
                       <th>Fecha de registro</th>
+                      <th>Uso</th>
+                      <th>Actividad</th>
                       <th></th>
                     </thead>
                     <tbody>
                     <?php foreach($users as $user): ?>
                       <tr>
                         <td><?php echo $user->Seq_Usuario; ?></td>
-                        <td><?php echo $user->Usuario; ?></td>
-                        <td><?php echo \App\Models\User::rol($user->sys_rol_id)->Funcion; ?></td>
+                        <td>
+                          <div><?php echo $user->Usuario; ?></div>
+                          <div class="small text-muted">
+                            Tipo: <span><?php echo \App\Models\User::rol($user->sys_rol_id)->Funcion; ?></span>  
+                          </div>
+                        </td>
                         <td><?php echo date('Y-m-d', strtotime($user->Fecha_Registro)); ?></td>
+                        <td>
+                          <small class="text-muted">
+                            <!-- Jun 11, 2015 - Jul 10, 2015 -->
+                            <?php 
+                              echo $userController->getUsage($user->Seq_Usuario);
+                            ?>
+                          </small>
+                        </td>
+                        <td>
+                          <div class="small text-muted">Último acceso</div>
+                          <strong>
+                            <?php 
+                              echo $userController->getActivity($user->Seq_Usuario);
+                            ?>
+                          </strong>
+                        </td>
                         <td>
                           <a href="?c=Registro&amp;a=editarUsuario&amp;id=<?php echo $user->Seq_Usuario; ?>"
                             class="badge badge-primary p-1">

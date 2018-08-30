@@ -587,7 +587,7 @@
 
                               <div class="form-group col-md-3">
                                 <label for="Numero_Documento">Número de Documento:</label>
-                                <input type="text" id="Numero_Documento" name="Numero_Documento" value="<?php echo $alm->Numero_Documento; ?>" 
+                                <input type="number" id="Numero_Documento" name="Numero_Documento" value="<?php echo $alm->Numero_Documento; ?>" 
                                       class="form-control" required>
                               </div>
 
@@ -609,8 +609,8 @@
 
                               <div class="form-group col-md-6 date" id='divMiCalendario'>
                                 <label for="Fecha_Nacimiento">Fecha de nacimiento:</label>
-                                <input type="text" id="Fecha_Nacimiento" name="Fecha_Nacimiento" value="<?php echo $alm->Fecha_Nacimiento; ?>" 
-                                      class="form-control" required>
+                                <input type="text" id="Fecha_Nacimiento" name="Fecha_Nacimiento" 
+                                  value="<?php echo date(" d-m-Y ", strtotime($alm->Fecha_Nacimiento)); ?>" class="form-control" required>
                               </div>
 
                               <div class="form-group col-md-6">
@@ -634,15 +634,6 @@
                               </div>
 
                               <div class="form-group col-md-6">
-                                <label for="Certificado_Naci">Certificado de Nacimiento Original:</label>
-                                <select id="Certificado_Naci" name="Certificado_Naci" class="custom-select mr-sm-2">
-                                  <option value="" selected>Seleccione una opción...</option>
-                                  <option <?php echo $alm->Certificado_Naci == 1 ? 'selected' : ''; ?> value="1">SI</option>
-                                  <option <?php echo $alm->Certificado_Naci == 2 ? 'selected' : ''; ?> value="2">NO</option>
-                                </select>
-                              </div>
-
-                              <div class="form-group col-md-6">
                                 <label for="Direccion_vive">Dirección donde vive actualmente:</label>
                                 <input type="text" id="Direccion_vive" name="Direccion_vive" value="<?php echo $alm->Direccion_vive; ?>" 
                                       class="form-control" required>
@@ -650,12 +641,12 @@
 
                               <div class="form-group col-md-6">
                                 <label for="Telefono">Teléfono:</label>
-                                <input type="tel" id="Telefono" name="Telefono" value="<?php echo $alm->Telefono; ?>" class="form-control">
+                                <input type="number" id="Telefono" name="Telefono" value="<?php echo $alm->Telefono; ?>" class="form-control">
                               </div>
 
                               <div class="form-group col-md-6">
                                 <label for="Celular">Celular:</label>
-                                <input type="tel" id="Celular" name="Celular" value="<?php echo $alm->Celular; ?>" class="form-control">
+                                <input type="number" id="Celular" name="Celular" value="<?php echo $alm->Celular; ?>" class="form-control">
                               </div>
                             </div>
                           </div>
@@ -780,93 +771,153 @@
                                     <th>Idioma</th>
                                     <th>Seleccionar</th>
                                   </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>
-                                        <label class="form-check-label" for="">Castellano</label>
-                                      </td>
-                                      <td>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="casYes">Si</label>
-                                          <input type="radio" name="Castellano" id="casYes" class="form-check-input"
-                                            <?php echo $alm->Castellano == 1 ? 'checked' : ''; ?> value="1" >
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="casNo">No</label>
-                                          <input type="radio" name="Castellano" id="casNo" class="form-check-input" 
-                                            <?php echo $alm->Castellano == 2 ? 'checked' : $alm->Castellano != 1 ? 'checked' : '' ; ?> value="2">
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <label class="form-check-label">Quechua</label>
-                                      </td>
-                                      <td>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="QueYes">Si</label>
-                                          <input type="radio" name="Quechua" id="QueYes" class="form-check-input"
-                                            <?php echo $alm->Quechua == 1 ? 'checked' : ''; ?> value="1" >
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="QueNo">No</label>
-                                          <input type="radio" name="Quechua" id="QueNo" class="form-check-input" 
-                                            <?php echo $alm->Quechua == 2 ? 'checked' : $alm->Quechua != 1 ? 'checked' : '' ; ?> value="2">
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <label class="form-check-label">Aymara</label>
-                                      </td>
-                                      <td>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="AymYes">Si</label>
-                                          <input type="radio" name="Aymara" id="AymYes" class="form-check-input"
-                                            <?php echo $alm->Aymara == 1 ? 'checked' : ''; ?> value="1" >
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="AymNo">No</label>
-                                          <input type="radio" name="Aymara" id="AymNo" class="form-check-input" 
-                                            <?php echo $alm->Aymara == 2 ? 'checked' : $alm->Aymara != 1 ? 'checked' : ''; ?> value="2">
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <label class="form-check-label">Guarani</label>
-                                      </td>
-                                      <td>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="GuaYes">Si</label>
-                                          <input type="radio" name="Guarani" id="GuaYes" class="form-check-input"
-                                            <?php echo $alm->Guarani == 1 ? 'checked' : ''; ?> value="1" >
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="GuaNo">No</label>
-                                          <input type="radio" name="Guarani" id="GuaNo" class="form-check-input" 
-                                            <?php echo $alm->Guarani == 2 ? 'checked' : $alm->Guarani != 1 ? 'checked' : ''; ?> value="2">
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <label class="form-check-label">Otro</label>
-                                      </td>
-                                      <td>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="OtroYes">Si</label>
-                                          <input type="radio" name="Otro" id="OtroYes" class="form-check-input"
-                                            <?php echo $alm->Otro == 1 ? 'checked' : ''; ?> value="1" >
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                          <label class="form-check-label" for="OtroNo">No</label>
-                                          <input type="radio" name="Otro" id="OtroNo" class="form-check-input" 
-                                            <?php echo $alm->Otro == 2 ? 'checked' : $alm->Otro != 1 ? 'checked' : ''; ?> value="2">
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tbody>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label" for="">Castellano</label>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="hablaCas">Si</label>
+                                        <input type="radio" name="Lee" id="hablaCas" class="form-check-input"
+                                          <?php echo $alm->Lee == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noHablaCas">No</label>
+                                        <input type="radio" name="Lee" id="noHablaCas" class="form-check-input" 
+                                          <?php echo $alm->Lee == 2 ? 'checked' : $alm->Lee != 1 ? 'checked' : '' ; ?> value="2">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="escribeCas">Si</label>
+                                        <input type="radio" name="Escribe" id="escribeCas" class="form-check-input"
+                                          <?php echo $alm->Escribe == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noEscribeCas">No</label>
+                                        <input type="radio" name="Escribe" id="noEscribeCas" class="form-check-input" 
+                                          <?php echo $alm->Escribe == 2 ? 'checked' : $alm->Escribe != 1 ? 'checked' : '' ; ?> value="2">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">Quechua</label>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="hablaQue">Si</label>
+                                        <input type="radio" name="Lee_Quechua" id="hablaQue" class="form-check-input"
+                                          <?php echo $alm->Lee_Quechua == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noHablaQue">No</label>
+                                        <input type="radio" name="Lee_Quechua" id="noHablaQue" class="form-check-input" 
+                                          <?php echo $alm->Lee_Quechua == 2 ? 'checked' : $alm->Lee_Quechua != 1 ? 'checked' : '' ; ?> value="2">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="EscribeQue">Si</label>
+                                        <input type="radio" name="EscribeQ" id="EscribeQue" class="form-check-input"
+                                          <?php echo $alm->EscribeQ == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noEscribeQue">No</label>
+                                        <input type="radio" name="EscribeQ" id="noEscribeQue" class="form-check-input" 
+                                          <?php echo $alm->EscribeQ == 2 ? 'checked' : $alm->EscribeQ != 1 ? 'checked' : '' ; ?> value="2">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">Aymara</label>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="hablaAym">Si</label>
+                                        <input type="radio" name="LeeA" id="hablaAym" class="form-check-input"
+                                          <?php echo $alm->LeeA == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noHablaAym">No</label>
+                                        <input type="radio" name="LeeA" id="noHablaAym" class="form-check-input" 
+                                          <?php echo $alm->LeeA == 2 ? 'checked' : $alm->LeeA != 1 ? 'checked' : ''; ?> value="2">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="escribeAym">Si</label>
+                                        <input type="radio" name="EscribeA" id="escribeAym" class="form-check-input"
+                                          <?php echo $alm->EscribeA == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noEscribeAym">No</label>
+                                        <input type="radio" name="EscribeA" id="noEscribeAym" class="form-check-input" 
+                                          <?php echo $alm->EscribeA == 2 ? 'checked' : $alm->EscribeA != 1 ? 'checked' : ''; ?> value="2">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">Guarani</label>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="hablaGua">Si</label>
+                                        <input type="radio" name="LeeG" id="hablaGua" class="form-check-input"
+                                          <?php echo $alm->LeeG == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noHablaGua">No</label>
+                                        <input type="radio" name="LeeG" id="noHablaGua" class="form-check-input" 
+                                          <?php echo $alm->LeeG == 2 ? 'checked' : $alm->LeeG != 1 ? 'checked' : ''; ?> value="2">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="escribeGua">Si</label>
+                                        <input type="radio" name="EscribeG" id="escribeGua" class="form-check-input"
+                                          <?php echo $alm->EscribeG == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noEscribeGua">No</label>
+                                        <input type="radio" name="EscribeG" id="noEscribeGua" class="form-check-input" 
+                                          <?php echo $alm->EscribeG == 2 ? 'checked' : $alm->EscribeG != 1 ? 'checked' : ''; ?> value="2">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">Otro</label>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="hablaOtro">Si</label>
+                                        <input type="radio" name="LeeO" id="hablaOtro" class="form-check-input"
+                                          <?php echo $alm->LeeO == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noHablaOtro">No</label>
+                                        <input type="radio" name="LeeO" id="noHablaOtro" class="form-check-input" 
+                                          <?php echo $alm->LeeO == 2 ? 'checked' : $alm->LeeO != 1 ? 'checked' : ''; ?> value="2">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="escribeOtro">Si</label>
+                                        <input type="radio" name="EscribeO" id="escribeOtro" class="form-check-input"
+                                          <?php echo $alm->EscribeO == 1 ? 'checked' : ''; ?> value="1" >
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="noEscribeOtro">No</label>
+                                        <input type="radio" name="EscribeO" id="noEscribeOtro" class="form-check-input" 
+                                          <?php echo $alm->EscribeO == 2 ? 'checked' : $alm->EscribeO != 1 ? 'checked' : ''; ?> value="2">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
                                 </table>
                               </div>
                               <div class="form-group col-md-6">
@@ -897,7 +948,7 @@
                               <div class="form-group col-md-6"  id="divMiCalendario2">
                                 <label for="Fecha_Formulario">Fecha del Formulario:</label>
                                 <input type="text" id="Fecha_Formulario" name="Fecha_Formulario" 
-                                      value="<?php echo $alm->Fecha_Formulario  ?>" 
+                                      value="<?php echo date(" d-m-Y ", strtotime($alm->Fecha_Formulario));?>" 
                                       class="form-control" required>
                               </div>
                             </div>
@@ -962,7 +1013,7 @@
     showDropdowns: true,
     minYear: 1901,
     locale: {
-      format: 'YYYY-MM-DD'
+      format: 'DD-MM-YYYY'
     }
   });
   
@@ -971,7 +1022,7 @@
     showDropdowns: true,
     minYear: 1901,
     locale: {
-      format: 'YYYY-MM-DD'
+      format: 'DD-MM-YYYY'
     }
   });
 

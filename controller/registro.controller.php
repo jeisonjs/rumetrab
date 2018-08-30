@@ -3,6 +3,20 @@ require_once 'model/Registro.php';
 
 class RegistroController{
     
+    /**
+     * Idioma seleccionado.
+     * Por lo tanto lo habla o escribe.
+     * 
+     * @var int
+     */
+    const SELECTED     = 1;
+
+    /**
+     * Idioma no seleccionado.
+     * 
+     * @var int
+     */
+    const NOT_SELECTED = 2;
     private $model;
     
     public function __CONSTRUCT(){
@@ -70,7 +84,7 @@ class RegistroController{
      *
      * @return view
      */
-    public function usuarios()
+    public function usuarios() 
     {
         $rolController = new App\Controllers\RolController;
         $roles = $rolController->getAllRoles();
@@ -93,9 +107,6 @@ class RegistroController{
     public function guardarUsuario()
     {
         $user = new \App\Models\User;
-
-        // header("Content-Type: application/json; charset=UTF-8");
-        // echo json_encode($rolName); die();
         
         $user->Seq_Usuario = $_REQUEST['Seq_Usuario'];
         $user->Usuario     = $_REQUEST['username'];
@@ -267,26 +278,30 @@ class RegistroController{
         $alm->Expedido= $_REQUEST['Expedido'];
         $alm->Estado_Civil= $_REQUEST['Estado_Civil'];     
         $alm->Sexo= $_REQUEST['Sexo'];
-        $alm->Fecha_Nacimiento= $_REQUEST['Fecha_Nacimiento'];
+        $alm->Fecha_Nacimiento= date('Y-m-d', strtotime($_REQUEST['Fecha_Nacimiento']));
 
         // Idioma
-        $alm->Castellano= $_REQUEST['Castellano'];
-        $alm->Lee= $_REQUEST['Castellano'];
-        $alm->Escribe= $_REQUEST['Castellano'];
-        $alm->Quechua= $_REQUEST['Quechua'];
-        $alm->Lee_Quechua= $_REQUEST['Quechua'];
-        $alm->EscribeQ= $_REQUEST['Quechua'];
-        $alm->Aymara= $_REQUEST['Aymara'];
-        $alm->LeeA= $_REQUEST['Aymara'];
-        $alm->EscribeA= $_REQUEST['Aymara'];
-        $alm->Guarani= $_REQUEST['Guarani'];
-        $alm->LeeG= $_REQUEST['Guarani'];
-        $alm->EscribeG= $_REQUEST['Guarani'];
-        $alm->Otro= $_REQUEST['Otro'];
-        $alm->LeeO= $_REQUEST['Otro'];
-        $alm->EscribeO= $_REQUEST['Otro'];        
-        $alm->Descripcion_idiomaO= $_REQUEST['Descripcion_idiomaO'];
+        $alm->Castellano  = ($_REQUEST['Lee'] == 1 || $_REQUEST['Escribe'] == 1) ? self::SELECTED : self::NOT_SELECTED ;
+        $alm->Lee         = $_REQUEST['Lee'];
+        $alm->Escribe     = $_REQUEST['Escribe'];
 
+        $alm->Quechua     = ($_REQUEST['Lee_Quechua'] == 1 || $_REQUEST['EscribeQ'] == 1) ? self::SELECTED : self::NOT_SELECTED ;
+        $alm->Lee_Quechua = $_REQUEST['Lee_Quechua'];
+        $alm->EscribeQ    = $_REQUEST['EscribeQ'];
+
+        $alm->Aymara      = ($_REQUEST['LeeA'] == 1 || $_REQUEST['EscribeA'] == 1) ? self::SELECTED : self::NOT_SELECTED ;
+        $alm->LeeA        = $_REQUEST['LeeA'];
+        $alm->EscribeA    = $_REQUEST['EscribeA'];
+
+        $alm->Guarani     = ($_REQUEST['LeeG'] == 1 || $_REQUEST['EscribeG'] == 1) ? self::SELECTED : self::NOT_SELECTED ;
+        $alm->LeeG        = $_REQUEST['LeeG'];
+        $alm->EscribeG    = $_REQUEST['EscribeG'];
+
+        $alm->Otro        = ($_REQUEST['LeeO'] == 1 || $_REQUEST['EscribeO'] == 1) ? self::SELECTED : self::NOT_SELECTED ;
+        $alm->LeeO        = $_REQUEST['LeeO'];
+        $alm->EscribeO    = $_REQUEST['EscribeO'];        
+        $alm->Descripcion_idiomaO= $_REQUEST['Descripcion_idiomaO'];
+        
         $alm->Direccion_vive= $_REQUEST['Direccion_vive'];
         $alm->Telefono= $_REQUEST['Telefono'];
         $alm->Celular= $_REQUEST['Celular'];
@@ -296,11 +311,13 @@ class RegistroController{
         $alm->Anos_Experiencia_Sub_Especialidad= $_REQUEST['Anos_Experiencia_Sub_Especialidad'];
         $alm->Numero_Pacientes= $_REQUEST['Numero_Pacientes'];
         $alm->Codigo_Formulario= $_REQUEST['Codigo_Formulario'];
-        $alm->Fecha_Formulario= $_REQUEST['Fecha_Formulario'];
+        $alm->Fecha_Formulario= date('Y-m-d', strtotime($_REQUEST['Fecha_Formulario']));
         $alm->HoraRegistro_Formulario= $_REQUEST['HoraRegistro_Formulario'];
         $alm->FechaRegistro_Formulario= $_REQUEST['FechaRegistro_Formulario'];
-        $alm->Certificado_Naci= $_REQUEST['Certificado_Naci'];
+        $alm->Certificado_Naci= 1; //$_REQUEST['Certificado_Naci'];
         
+        // header("Content-Type: application/json; charset=UTF-8");
+        // echo json_encode($alm); die();
         
         $alm->Seq_Registro > 0 
             ? $this->model->Actualizar($alm)
@@ -335,6 +352,10 @@ class RegistroController{
                     // session_start(); 
                     $_SESSION['Usuario']=$Nombredeusuario;
                     $_SESSION['authenticated'] = true;
+
+                    // Registrar el inicio de sesión.
+                    $userController = new App\Controllers\UserController;
+                    $users = $userController->registerSessionStart();
 
                     header('Location: ?c=Registro&a=Principal');
                 }
