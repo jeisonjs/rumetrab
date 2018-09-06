@@ -24,7 +24,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-12">
-                      <input type="hidden" name="Seq_Registro" value="<?php echo $alm->Seq_Registro; ?>" />
+                      <input type="hidden" name="Seq_Registro" value="0" />
 
                       <!-- Sección: Ubicación -->
                       <div class="card">
@@ -45,28 +45,27 @@
 
                             <div class="form-group col-md-6">
                               <label for="CboProvincia">Provincia:</label>
-                              <select id="CboProvincia" name="Provincia_Seq" class="custom-select mr-sm-2">
+                              <select id="CboProvincia" name="Provincia_Seq" class="custom-select mr-sm-2" disabled>
                                 <option value="" selected>Seleccione Provincia...</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="CboMunicipios">Municipio:</label>
-                              <select id="CboMunicipios" name="Municipio_Seq"  class="custom-select mr-sm-2">
-                                <option value="0" selected>Seleccione Municipio...</option>
+                              <select id="CboMunicipios" name="Municipio_Seq"  class="custom-select mr-sm-2" disabled>
+                                <option value="" selected>Seleccione Municipio...</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Comunidad">Comunidad:</label>
-                              <input type="text" id="Comunidad" name="Comunidad" value="<?php echo $alm->Comunidad;?>" 
-                                      class="form-control">
+                              <input type="text" id="Comunidad" name="Comunidad" class="form-control">
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Organizacion_Pertenece">Organización a la que Pertenece:</label>
                               <input type="text" id="Organizacion_Pertenece" name="Organizacion_Pertenece" 
-                                      value="<?php echo $alm->Organizacion_Pertenece; ?>" class="form-control">
+                                     class="form-control">
                             </div>
                           </div>
                         </div>
@@ -87,16 +86,16 @@
                               <label for="Tipo_Documento">Tipo de Documento:</label>
                               <select id="Tipo_Documento" name="Tipo_Documento" class="custom-select mr-sm-2" required>
                                 <option value="" selected>Seleccione Tipo de Documento...</option>
-                                <option <?php echo $alm->Tipo_Documento == 1 ? 'selected' : ''; ?> value="1">C.I.</option>
-                                <option <?php echo $alm->Tipo_Documento == 2 ? 'selected' : ''; ?> value="2">R.U.N.</option>
-                                <option <?php echo $alm->Tipo_Documento == 3 ? 'selected' : ''; ?> value="3">LIBRETA DE S.M.</option>
-                                <option <?php echo $alm->Tipo_Documento == 4 ? 'selected' : ''; ?> value="4">PASAPORTE</option>
+                                <option value="1">C.I.</option>
+                                <option value="2">R.U.N.</option>
+                                <option value="3">LIBRETA DE S.M.</option>
+                                <option value="4">PASAPORTE</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Numero_Documento">Número de Documento:</label>
-                              <input type="number" id="Numero_Documento" name="Numero_Documento" value="<?php echo $alm->Numero_Documento; ?>" 
+                              <input type="number" id="Numero_Documento" name="Numero_Documento" 
                                 class="form-control" required>
                             </div>
 
@@ -119,15 +118,6 @@
                               <label for="CboDepCI">Documento expedido en:</label>
                               <select id="CboDepCI" name="Expedido" class="custom-select mr-sm-2" required>
                                 <option value="" selected>Seleccione...</option>
-                                <option <?php echo $alm->Expedido ==80 ? 'selected' : ''; ?> value="80">BENI / TRINIDAD</option>
-                                <option <?php echo $alm->Expedido ==10 ? 'selected' : ''; ?> value="10">CHUQUISACA / SUCRE</option>
-                                <option <?php echo $alm->Expedido ==30 ? 'selected' : ''; ?> value="30">COCHABAMBA</option>
-                                <option <?php echo $alm->Expedido ==20 ? 'selected' : ''; ?> value="20">LA PAZ</option>
-                                <option <?php echo $alm->Expedido ==40 ? 'selected' : ''; ?> value="40">ORURO</option>
-                                <option <?php echo $alm->Expedido ==90 ? 'selected' : ''; ?> value="90">PANDO / COBIJA</option>
-                                <option <?php echo $alm->Expedido ==50 ? 'selected' : ''; ?> value="50">POTOSÍ</option>
-                                <option <?php echo $alm->Expedido ==70 ? 'selected' : ''; ?> value="70">SANTA CRUZ</option>
-                                <option <?php echo $alm->Expedido ==60 ? 'selected' : ''; ?> value="60">TARIJA</option>
                               </select>
                             </div>
 
@@ -136,31 +126,31 @@
 
                             <div class="form-group col-md-6">
                               <label for="Primer_Apellido">Primer Apellido:</label>
-                              <input type="text" id="Primer_Apellido" name="Primer_Apellido" value="<?php echo $alm->Primer_Apellido; ?>" 
+                              <input type="text" id="Primer_Apellido" name="Primer_Apellido"
                                       class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Primer_Nombre">Primer Nombre:</label>
-                              <input type="text" id="Primer_Nombre" name="Primer_Nombre" value="<?php echo $alm->Primer_Nombre; ?>" 
+                              <input type="text" id="Primer_Nombre" name="Primer_Nombre"
                                       class="form-control">
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Segundo_Apellido">Segundo Apellido:</label>
-                              <input type="text" id="Segundo_Apellido" name="Segundo_Apellido" value="<?php echo $alm->Segundo_Apellido; ?>" 
+                              <input type="text" id="Segundo_Apellido" name="Segundo_Apellido"
                                       class="form-control">
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Segundo_Nombre">Segundo Nombre:</label>
-                              <input type="text" id="Segundo_Nombre" name="Segundo_Nombre" value="<?php echo $alm->Segundo_Nombre; ?>" 
+                              <input type="text" id="Segundo_Nombre" name="Segundo_Nombre"
                                       class="form-control">
                             </div>
 
                             <div class="form-group col-md-6 date" id='divMiCalendario'>
                               <label for="Fecha_Nacimiento">Fecha de nacimiento:</label>
-                              <input type="text" id="Fecha_Nacimiento" name="Fecha_Nacimiento" value="<?php echo $alm->Fecha_Nacimiento; ?>" 
+                              <input type="text" id="Fecha_Nacimiento" name="Fecha_Nacimiento"
                                       class="form-control" required>
                             </div>
 
@@ -168,8 +158,8 @@
                               <label for="Sexo">Sexo:</label>
                               <select id="Sexo" name="Sexo" class="custom-select mr-sm-2" required>
                                 <option value="" selected>Seleccione un sexo...</option>
-                                <option <?php echo $alm->Sexo == 1 ? 'selected' : ''; ?> value="1">Masculino</option>
-                                <option <?php echo $alm->Sexo == 2 ? 'selected' : ''; ?> value="2">Femenino</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Femenino</option>
                               </select>
                             </div>
 
@@ -177,27 +167,27 @@
                               <label for="Estado_Civil">Estado Civil:</label>
                               <select id="Estado_Civil" name="Estado_Civil" class="custom-select mr-sm-2">
                                 <option value="" selected>Seleccione el Estado Civil...</option>
-                                <option <?php echo $alm->Estado_Civil == 1 ? 'selected' : ''; ?> value="1">SOLTERO</option>
-                                <option <?php echo $alm->Estado_Civil == 2 ? 'selected' : ''; ?> value="2">CASADO</option>
-                                <option <?php echo $alm->Estado_Civil == 3 ? 'selected' : ''; ?> value="3">DIVORCIADO</option>
-                                <option <?php echo $alm->Estado_Civil == 4 ? 'selected' : ''; ?> value="4">VIUDO</option>
+                                <option value="1">SOLTERO</option>
+                                <option value="2">CASADO</option>
+                                <option value="3">DIVORCIADO</option>
+                                <option value="4">VIUDO</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Direccion_vive">Dirección donde vive actualmente:</label>
-                              <input type="text" id="Direccion_vive" name="Direccion_vive" value="<?php echo $alm->Direccion_vive; ?>" 
+                              <input type="text" id="Direccion_vive" name="Direccion_vive"
                                       class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Telefono">Teléfono:</label>
-                              <input type="number" id="Telefono" name="Telefono" value="<?php echo $alm->Telefono; ?>" class="form-control">
+                              <input type="number" id="Telefono" name="Telefono" class="form-control">
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Celular">Celular:</label>
-                              <input type="number" id="Celular" name="Celular" value="<?php echo $alm->Celular; ?>" class="form-control">
+                              <input type="number" id="Celular" name="Celular" class="form-control">
                             </div>
                           </div>
                         </div>
@@ -217,14 +207,14 @@
                               <label for="Tipo_Trabajo">Modalidad de Trabajo como Médico Tradicional:</label>
                               <select id="Tipo_Trabajo" name="Tipo_Trabajo" class="custom-select mr-sm-2">
                                 <option value="" selected>Seleccione la modalidad de trabajo...</option>
-                                <option <?php echo $alm->Tipo_Trabajo == 1 ? 'selected' : ''; ?> value="1">AMBULANTE</option>
-                                <option <?php echo $alm->Tipo_Trabajo == 2 ? 'selected' : ''; ?> value="2">FIJO</option>
+                                <option value="1">AMBULANTE</option>
+                                <option value="2">FIJO</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Direccion_Trabajo">Dirección donde Trabaja como Médico Tradicional:</label>
-                              <input type="text" id="Direccion_Trabajo" name="Direccion_Trabajo" value="<?php echo $alm->Direccion_Trabajo; ?>" class="form-control">
+                              <input type="text" id="Direccion_Trabajo" name="Direccion_Trabajo" class="form-control">
                             </div>
                           </div>
                         </div>
@@ -249,26 +239,27 @@
 
                             <div class="form-group col-md-6">
                               <label for="CboSubEspecialidad">Sub Especialidad:</label>
-                              <select id="CboSubEspecialidad" name="SubEspecialidad_Seq" class="custom-select mr-sm-2" required>
+                              <select id="CboSubEspecialidad" name="SubEspecialidad_Seq" 
+                                      class="custom-select mr-sm-2" required disabled>
                                 <option value="" selected>Seleccione una Sub Especialidad...</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="inputEmail4">Años de Experiencia:</label>
-                              <input type="number" name="Anos_Experiencia_Especialidad" value="<?php echo $alm->Anos_Experiencia_Especialidad; ?>" 
+                              <input type="number" name="Anos_Experiencia_Especialidad"
                                       id="Anos_Experiencia_Especialidad" class="form-control" maxlength="2" required>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Anos_Experiencia_Sub_Especialidad">Años de Experiencia de Sub Especialidad:</label>
-                              <input type="number" name="Anos_Experiencia_Sub_Especialidad" value="<?php echo $alm->Anos_Experiencia_Sub_Especialidad; ?>" 
+                              <input type="number" name="Anos_Experiencia_Sub_Especialidad"
                                       id="Anos_Experiencia_Sub_Especialidad" class="form-control" maxlength="2" required>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Numero_Pacientes">Número de Pacientes Ultimo Año(opcional)::</label>
-                              <input type="number" id="Numero_Pacientes" name="Numero_Pacientes" value="<?php echo $alm->Numero_Pacientes; ?>" 
+                              <input type="number" id="Numero_Pacientes" name="Numero_Pacientes"
                                       class="form-control" maxlength="4">
                             </div>
                           </div>
@@ -300,25 +291,23 @@
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="hablaCas">Si</label>
-                                        <input type="radio" name="Lee" id="hablaCas" class="form-check-input"
-                                          <?php echo $alm->Lee == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="Lee" id="hablaCas" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noHablaCas">No</label>
-                                        <input type="radio" name="Lee" id="noHablaCas" class="form-check-input" 
-                                          <?php echo $alm->Lee == 2 ? 'checked' : $alm->Lee != 1 ? 'checked' : '' ; ?> value="2">
+                                        <input type="radio" name="Lee" id="noHablaCas" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="escribeCas">Si</label>
-                                        <input type="radio" name="Escribe" id="escribeCas" class="form-check-input"
-                                          <?php echo $alm->Escribe == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="Escribe" id="escribeCas" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noEscribeCas">No</label>
-                                        <input type="radio" name="Escribe" id="noEscribeCas" class="form-check-input" 
-                                          <?php echo $alm->Escribe == 2 ? 'checked' : $alm->Escribe != 1 ? 'checked' : '' ; ?> value="2">
+                                        <input type="radio" name="Escribe" id="noEscribeCas" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                   </tr>
@@ -329,25 +318,23 @@
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="hablaQue">Si</label>
-                                        <input type="radio" name="Lee_Quechua" id="hablaQue" class="form-check-input"
-                                          <?php echo $alm->Lee_Quechua == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="Lee_Quechua" id="hablaQue" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noHablaQue">No</label>
-                                        <input type="radio" name="Lee_Quechua" id="noHablaQue" class="form-check-input" 
-                                          <?php echo $alm->Lee_Quechua == 2 ? 'checked' : $alm->Lee_Quechua != 1 ? 'checked' : '' ; ?> value="2">
+                                        <input type="radio" name="Lee_Quechua" id="noHablaQue" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="EscribeQue">Si</label>
-                                        <input type="radio" name="EscribeQ" id="EscribeQue" class="form-check-input"
-                                          <?php echo $alm->EscribeQ == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="EscribeQ" id="EscribeQue" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noEscribeQue">No</label>
-                                        <input type="radio" name="EscribeQ" id="noEscribeQue" class="form-check-input" 
-                                          <?php echo $alm->EscribeQ == 2 ? 'checked' : $alm->EscribeQ != 1 ? 'checked' : '' ; ?> value="2">
+                                        <input type="radio" name="EscribeQ" id="noEscribeQue" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                   </tr>
@@ -358,25 +345,23 @@
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="hablaAym">Si</label>
-                                        <input type="radio" name="LeeA" id="hablaAym" class="form-check-input"
-                                          <?php echo $alm->LeeA == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="LeeA" id="hablaAym" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noHablaAym">No</label>
-                                        <input type="radio" name="LeeA" id="noHablaAym" class="form-check-input" 
-                                          <?php echo $alm->LeeA == 2 ? 'checked' : $alm->LeeA != 1 ? 'checked' : ''; ?> value="2">
+                                        <input type="radio" name="LeeA" id="noHablaAym" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="escribeAym">Si</label>
-                                        <input type="radio" name="EscribeA" id="escribeAym" class="form-check-input"
-                                          <?php echo $alm->EscribeA == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="EscribeA" id="escribeAym" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noEscribeAym">No</label>
-                                        <input type="radio" name="EscribeA" id="noEscribeAym" class="form-check-input" 
-                                          <?php echo $alm->EscribeA == 2 ? 'checked' : $alm->EscribeA != 1 ? 'checked' : ''; ?> value="2">
+                                        <input type="radio" name="EscribeA" id="noEscribeAym" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                   </tr>
@@ -387,25 +372,23 @@
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="hablaGua">Si</label>
-                                        <input type="radio" name="LeeG" id="hablaGua" class="form-check-input"
-                                          <?php echo $alm->LeeG == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="LeeG" id="hablaGua" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noHablaGua">No</label>
-                                        <input type="radio" name="LeeG" id="noHablaGua" class="form-check-input" 
-                                          <?php echo $alm->LeeG == 2 ? 'checked' : $alm->LeeG != 1 ? 'checked' : ''; ?> value="2">
+                                        <input type="radio" name="LeeG" id="noHablaGua" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="escribeGua">Si</label>
-                                        <input type="radio" name="EscribeG" id="escribeGua" class="form-check-input"
-                                          <?php echo $alm->EscribeG == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="EscribeG" id="escribeGua" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noEscribeGua">No</label>
-                                        <input type="radio" name="EscribeG" id="noEscribeGua" class="form-check-input" 
-                                          <?php echo $alm->EscribeG == 2 ? 'checked' : $alm->EscribeG != 1 ? 'checked' : ''; ?> value="2">
+                                        <input type="radio" name="EscribeG" id="noEscribeGua" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                   </tr>
@@ -416,25 +399,23 @@
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="hablaOtro">Si</label>
-                                        <input type="radio" name="LeeO" id="hablaOtro" class="form-check-input"
-                                          <?php echo $alm->LeeO == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="LeeO" id="hablaOtro" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noHablaOtro">No</label>
-                                        <input type="radio" name="LeeO" id="noHablaOtro" class="form-check-input" 
-                                          <?php echo $alm->LeeO == 2 ? 'checked' : $alm->LeeO != 1 ? 'checked' : ''; ?> value="2">
+                                        <input type="radio" name="LeeO" id="noHablaOtro" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="escribeOtro">Si</label>
-                                        <input type="radio" name="EscribeO" id="escribeOtro" class="form-check-input"
-                                          <?php echo $alm->EscribeO == 1 ? 'checked' : ''; ?> value="1" >
+                                        <input type="radio" name="EscribeO" id="escribeOtro" class="form-check-input" value="1" >
                                       </div>
                                       <div class="form-check form-check-inline">
                                         <label class="form-check-label" for="noEscribeOtro">No</label>
-                                        <input type="radio" name="EscribeO" id="noEscribeOtro" class="form-check-input" 
-                                          <?php echo $alm->EscribeO == 2 ? 'checked' : $alm->EscribeO != 1 ? 'checked' : ''; ?> value="2">
+                                        <input type="radio" name="EscribeO" id="noEscribeOtro" class="form-check-input" value="2"
+                                               checked>
                                       </div>
                                     </td>
                                   </tr>
@@ -444,7 +425,7 @@
                             <div class="form-group col-md-6">
                               <label for="Descripcion_idiomaO">Descripción de otro idioma:</label>
                               <input type="text" id="Descripcion_idiomaO" name="Descripcion_idiomaO" 
-                                      value="<?php echo $alm->Descripcion_idiomaO; ?>" class="form-control form-control-sm">
+                                     class="form-control form-control-sm">
                             </div>
                           </div>
 
@@ -463,14 +444,13 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="Codigo_Formulario">Código de Formulario:</label>
-                              <input type="text" id="Codigo_Formulario" name="Codigo_Formulario" value="<?php echo $alm->Codigo_Formulario; ?>" 
+                              <input type="text" id="Codigo_Formulario" name="Codigo_Formulario"
                                       class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-6"  id="divMiCalendario2">
                               <label for="Fecha_Formulario">Fecha del Formulario:</label>
-                              <input type="text" id="Fecha_Formulario" name="Fecha_Formulario" 
-                                      value="<?php echo $alm->Fecha_Formulario; ?>"
+                              <input type="text" id="Fecha_Formulario" name="Fecha_Formulario"
                                       class="form-control" required>
                             </div>
                           </div>
@@ -532,28 +512,28 @@
 
   <script type="text/javascript">
 
-    $('#Fecha_Nacimiento').daterangepicker({
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1901,
-      locale: {
-        format: 'DD-MM-YYYY'
-      }
-    });
-    
-    $('#Fecha_Formulario').daterangepicker({
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1901,
-      locale: {
-        format: 'DD-MM-YYYY'
-      }
-    });
-
-
-
     $(document).ready(function () {
+
+      $('#Fecha_Nacimiento').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 1901,
+        locale: {
+          format: 'DD-MM-YYYY'
+        }
+      });
+      
+      $('#Fecha_Formulario').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 1901,
+        locale: {
+          format: 'DD-MM-YYYY'
+        }
+      });
+    
       cargar_Departamento();
+      cargar_Especialidad();
 
       $("#CboDepartamento").change(function () {
         dependencia_Provincia();
@@ -563,43 +543,54 @@
         dependencia_Municipio();
       });
 
-      $("#CboProvincia").attr("disabled", true);
-
-      $("#CboMunicipios").attr("disabled", true);
-
-      cargar_DepartamentoCI();
-      cargar_Especialidad();
-
       $("#CboEspecialidad").change(function () {
         dependencia_SubEspe();
       });
 
-      $("#CboSubEspecialidad").attr("disabled", true);
     });
 
     function cargar_Departamento() {
-      $.get("controller/cargar-Dep.php", function (resultado) {
+      $.get("?c=Registro&a=getAllDepartaments", function (resultado) {
+
+        var departament_html = '';
+
+        $.each(resultado, function(clave, valor) {
+          departament_html += `
+            <option value="${valor.Seq_Departamento}">${valor.Nombre}</option>
+          `;
+        });
+
+        // Insertando la lista de departamentos.
+        $("#CboDepartamento").append(departament_html);
+        $("#CboDepCI").append(departament_html);
         
-        if (resultado == false) {
-          alert("Error");
-        } else {
-          $('#CboDepartamento').append(resultado);
-        }
       });
     }
 
     function dependencia_Provincia() {
       var code = $("#CboDepartamento").val();
-      $.get("controller/dependencia-Provincia.php", {
+
+      $.get("?c=Registro&a=getProvinceByDepartament", {
           code: code
         },
         function (resultado) {
+          
           if (resultado == false) {
             alert("Error");
           } else {
             $("#CboProvincia").attr("disabled", false);
             document.getElementById("CboProvincia").options.length = 1;
-            $('#CboProvincia').append(resultado);
+
+            var province_html = '';
+
+            $.each(resultado, function(clave, valor) {
+              province_html += `
+                <option value="${valor.id}">${valor.nombre}</option>
+              `;
+            });
+
+            // Insertando la lista de provincias.
+            $("#CboProvincia").append(province_html);
           }
         }
 
@@ -608,7 +599,8 @@
 
     function dependencia_Municipio() {
       var code = $("#CboProvincia").val();
-      $.get("controller/dependencia-Municipio.php?", {
+      
+      $.get("?c=Registro&a=getMunicipioByProvince", {
         code: code
       }, function (resultado) {
         if (resultado == false) {
@@ -616,20 +608,20 @@
         } else {
           $("#CboMunicipios").attr("disabled", false);
           document.getElementById("CboMunicipios").options.length = 1;
-          $('#CboMunicipios').append(resultado);
+          
+          var municipio_html = '';
+
+          $.each(resultado, function(clave, valor) {
+            municipio_html += `
+              <option value="${valor.Seq_Municipio}">${valor.Nombre}</option>
+            `;
+          });
+
+          // Insertando la lista de municipios.
+          $('#CboMunicipios').append(municipio_html);
         }
       });
 
-    }
-
-    function cargar_DepartamentoCI() {
-      $.get("controller/cargar-DepCI.php", function (resultado) {
-        if (resultado == false) {
-          alert("Error");
-        } else {
-          $('#CboDepartamentoCI').append(resultado);
-        }
-      });
     }
 
     function cargar_Especialidad() {

@@ -32,7 +32,7 @@ class RegistroController{
         // require_once 'view/header_index.php';
         // require_once 'view/Registro/index.php';
         // require_once 'view/footer.php';
-        require_once 'view/auth/login.php';
+        require_once 'view/auth/login2.php';
     }
 
     /**
@@ -56,12 +56,6 @@ class RegistroController{
         // require_once 'view/Registro/Principal.php';
         // require_once 'view/footer.php';
 
-        $alm = new Registro();
-         
-        if(isset($_REQUEST['Seq_Registro'])){
-            $alm = $this->model->Obtener($_REQUEST['Seq_Registro']);
-        }
-        
         require_once 'view/medics/create.php';
     }
 
@@ -201,12 +195,44 @@ class RegistroController{
         require_once 'view/Registro/Listar_Municipio.php';
         require_once 'view/footer.php';
     }
+
+    public function getAllDepartaments()
+    {
+        $td     = new \App\Controllers\TerritorialDistributionController();
+        $result = $td->getAllDepartaments();
+        
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($result); die();
+    }
+
+    public function getProvinceByDepartament()
+    {
+        $departamento_id = $_GET["code"];
+        
+        $td     = new \App\Controllers\TerritorialDistributionController();
+        $result = $td->getProvinceByDepartament($departamento_id);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($result); die();
+    }
+ 
+    public function getMunicipioByProvince()
+    {
+        $provincia_id = $_GET["code"];
+        
+        $td     = new \App\Controllers\TerritorialDistributionController();
+        $result = $td->getMunicipioByProvince($provincia_id);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($result); die();
+    }
+
     public function Crud(){
-        $alm = new Registro();
+        // $alm = new Registro();
          
-        if(isset($_REQUEST['Seq_Registro'])){
-            $alm = $this->model->Obtener($_REQUEST['Seq_Registro']);
-        }
+        // if(isset($_REQUEST['Seq_Registro'])){
+        //     $alm = $this->model->Obtener($_REQUEST['Seq_Registro']);
+        // }
         
         // require_once 'view/header.php';
         // require_once 'view/Registro/Nuevo_registro.php';
@@ -219,6 +245,9 @@ class RegistroController{
         
         if(isset($_REQUEST['Seq_Registro'])){
             $alm = $this->model->Obtener($_REQUEST['Seq_Registro']);
+
+            $td     = new \App\Controllers\TerritorialDistributionController();
+            $departamentos = $td->getAllDepartaments();
         }
         
         // require_once 'view/header.php';
@@ -226,6 +255,18 @@ class RegistroController{
         // require_once 'view/footer.php';
         require_once 'view/medics/edit.php';
     }
+
+    public function getRegister()
+    {
+        $register_id = $_GET["code"];
+
+        $td     = new \App\Controllers\RegisterController();
+        $result = $td->getRegister($register_id);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($result); die();
+    }
+
     public function Imagen(){
         $alm = new Registro();
         
@@ -257,6 +298,16 @@ class RegistroController{
         require_once 'view/Registro/app/reporte/productos.php';
         
     }
+
+    public function pruebas()
+    {        
+        $td = new \App\Controllers\TerritorialDistributionController();
+        $result = $td->getMunicipioByProvince(2);
+
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($result); die();
+    }
+
     public function Guardar(){
         
         $alm = new Registro();
@@ -316,12 +367,28 @@ class RegistroController{
         $alm->FechaRegistro_Formulario= $_REQUEST['FechaRegistro_Formulario'];
         $alm->Certificado_Naci= 1; //$_REQUEST['Certificado_Naci'];
         
-        // header("Content-Type: application/json; charset=UTF-8");
-        // echo json_encode($alm); die();
         
-        $alm->Seq_Registro > 0 
-            ? $this->model->Actualizar($alm)
-            : $this->model->Registrar($alm);
+        // $alm->Seq_Registro > 0 
+        //     ? $this->model->Actualizar($alm)
+        //     : $this->model->Registrar($alm);
+
+        if($alm->Seq_Registro > 0) {
+            $this->model->Actualizar($alm);
+
+            $_SESSION['result'] = [
+                'status'  => 'success',
+                'message' => 'Médico actualizado satisfactoriamente!',
+                'notification' => 'success'
+            ];
+        } else {
+            $this->model->Registrar($alm);
+
+            $_SESSION['result'] = [
+                'status'  => 'success',
+                'message' => 'Médico registrado satisfactoriamente!',
+                'notification' => 'success'
+            ];
+        }
         
         header('Location: ?c=Registro&a=MT');
     }

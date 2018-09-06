@@ -26,61 +26,64 @@
     <link rel="stylesheet" href="./assets/v2/css/styles.css">
     <style>
       body {
-        background-image: 
-        /* radial-gradient(ellipse at bottom, rgba(102, 114, 119, 0.23) 20%, rgba(19, 20, 23, 0.56) 100%), 
-    	                    url('imagenes/rumetrabimagen2.jpg'); */
-          linear-gradient(to right, rgba(15, 32, 39, 0.8), rgba(32, 58, 67, 0.6), rgba(44, 83, 100, 0.71)), url(imagenes/a4.jpg);
-        background-position: center center;
-        background-attachment: fixed;
+        background-color: #333;
+      }
+
+      .col-left,
+      .col-right {
+        height: 100vh;
+      }
+
+      .col-left {
+        background-color: #FEFEFE;
+      }
+
+      .col-right {
+        background-image: radial-gradient(ellipse at bottom, rgba(102, 114, 119, 0.23) 20%, rgba(19, 20, 23, 0.56) 100%), 
+          url('imagenes/soja.jpg');
+        background-position: center;
+        /* background-attachment: fixed; */
         background-repeat: no-repeat;
         background-size: cover;
-      }
 
-      .card {
-        border-radius: 3px;
-      }
-
-      .footer-white {
-        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     </style>
   </head>
 
   <body>
-    <div class="row m-0 align-items-center" style="height: 100vh;">
-      <div class="col-md-6 ml-auto mr-auto col-login">
-        <div class="card card-user">
-          <div class="image p-4 pb-0">
-            <img src="imagenes/cabecejjjra.jpg" alt="...">
-          </div>
-          <div class="card-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-lg-6 col-left p-md-5 d-flex">
+          <div class="row justify-content-center">
+            <div class="col-8">
+              <div class="pb-0">
+                <img src="imagenes/cabecejjjra.jpg" class="img-fluid" alt="...">
+              </div>
+            </div>
+            <div class="col-8">
+              <form action="?c=Registro&a=validar" method="POST" enctype="aplication/x-www-form-urlecoded" autocomplete="off">
+                <div class="form">
+                  <div class="form-group">
+                    <label for="inputEmail4">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="caja1" name="NUsuario" placeholder="Usuario" required>
+                  </div>
 
-            <form action="?c=Registro&a=validar" method="POST" enctype="aplication/x-www-form-urlecoded" autocomplete="off">
-              <div class="form">
-                <div class="form-group">
-                  <label for="inputEmail4">Nombre de Usuario</label>
-                  <input type="text" class="form-control" id="caja1" name="NUsuario" placeholder="Usuario" required>
+                  <div class="form-group">
+                    <label for="inputEmail4">Password / Contraseña</label>
+                    <input type="password" id="caja2" name="Pass" class="form-control" placeholder="Contraseña" required>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail4">Password / Contraseña</label>
-                  <input type="password" id="caja2" name="Pass" class="form-control" placeholder="Contraseña" required>
+                  <button type="submit" id="IngresoLog" class="btn btn-primary submit-btn btn-block">Entrar</button>
                 </div>
-              </div>
-
-              <div class="form-group">
-                <button type="submit" id="IngresoLog" class="btn btn-primary submit-btn btn-block">Entrar</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <footer class="footer footer-black footer-white text-center font-weight-bold">
-          <div class="container-fluid">
-            <div class="row">
-
-              <div class="credits ml-auto mr-auto">
+              </form>
+            </div>
+            <div class="col-8">
+              <footer class="footer footer-black footer-white text-center font-weight-bold">
                 <span class="copyright col-12">
                   <p>
                     Viceministerio de Medicina Tradicional e Interculturalidad
@@ -96,10 +99,13 @@
                   <!-- , made with
                   <i class="fa fa-heart heart"></i> by ... -->
                 </span>
-              </div>
+              </footer>
             </div>
           </div>
-        </footer>
+        </div>
+        <div class="col-lg-6 col-right d-none d-lg-flex">
+          <img src="imagenes/r2.svg" alt="...">
+        </div>
       </div>
     </div>
 

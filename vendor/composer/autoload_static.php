@@ -22,10 +22,17 @@ class ComposerStaticInitfc17bfe10211a70fd6dcfa670d3e88ea
 
     public static $classMap = array (
         'App\\Controller\\Auth\\Auth' => __DIR__ . '/../..' . '/controller/Auth/Auth.php',
+        'App\\Controller\\Utils\\Util' => __DIR__ . '/../..' . '/controller/Utils/Util.php',
+        'App\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/controller/RegisterController.php',
         'App\\Controllers\\RolController' => __DIR__ . '/../..' . '/controller/RolController.php',
+        'App\\Controllers\\TerritorialDistributionController' => __DIR__ . '/../..' . '/controller/TerritorialDistributionController.php',
         'App\\Controllers\\UserController' => __DIR__ . '/../..' . '/controller/UserController.php',
         'App\\Models\\Dao\\RolDao' => __DIR__ . '/../..' . '/model/dao/Rol.php',
+        'App\\Models\\Dao\\TerritorialDistributionDao' => __DIR__ . '/../..' . '/model/dao/TerritorialDistribution.php',
         'App\\Models\\Dao\\UserDao' => __DIR__ . '/../..' . '/model/dao/User.php',
+        'App\\Models\\Departamento' => __DIR__ . '/../..' . '/model/TerritorialDistribution.php',
+        'App\\Models\\Municipio' => __DIR__ . '/../..' . '/model/TerritorialDistribution.php',
+        'App\\Models\\Provincia' => __DIR__ . '/../..' . '/model/TerritorialDistribution.php',
         'App\\Models\\Rol' => __DIR__ . '/../..' . '/model/Rol.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/model/User.php',
     );

@@ -7,6 +7,16 @@
       <?php include_once __DIR__ . '/../partials/navbar.php'; ?>
       <div class="content">
         <div class="row">
+          <?php if(isset($_SESSION['result'])): ?>
+            <div class="col-md-12">
+              <div class="alert alert-<?php echo $_SESSION['result']['notification'] ?> alert-dismissible fade show">
+                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                  <i class="nc-icon nc-single-copy-04"></i>
+                </button>
+                <span><?php echo $_SESSION['result']['message'] ?></span>
+              </div>
+            </div>
+          <?php endif ?>
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
@@ -90,7 +100,10 @@
 
 </body>
 <!--   Core JS Files   -->
-<?php include_once __DIR__ . '/../partials/scripts.php'; ?>
+<?php 
+  include_once __DIR__ . '/../partials/scripts.php';
+  unset($_SESSION['result']);
+ ?>
 
 <script type="text/javascript">
 

@@ -1,4 +1,8 @@
 <?php
+
+// namespace App\Models;
+
+
 class Registro
 {
 	private $pdo; 
