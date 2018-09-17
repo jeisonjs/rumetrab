@@ -45,21 +45,21 @@
 
                             <div class="form-group col-md-6">
                               <label for="CboProvincia">Provincia:</label>
-                              <select id="CboProvincia" name="Provincia_Seq" class="custom-select mr-sm-2" disabled>
+                              <select id="CboProvincia" name="Provincia_Seq" class="custom-select mr-sm-2" disabled required>
                                 <option value="" selected>Seleccione Provincia...</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="CboMunicipios">Municipio:</label>
-                              <select id="CboMunicipios" name="Municipio_Seq"  class="custom-select mr-sm-2" disabled>
+                              <select id="CboMunicipios" name="Municipio_Seq"  class="custom-select mr-sm-2" disabled required>
                                 <option value="" selected>Seleccione Municipio...</option>
                               </select>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Comunidad">Comunidad:</label>
-                              <input type="text" id="Comunidad" name="Comunidad" class="form-control">
+                              <input type="text" id="Comunidad" name="Comunidad" class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-6">
@@ -101,8 +101,7 @@
 
                             <div class="form-group col-md-6">
                               <label for="complemento">Complemento:</label>
-                              <input type="text" id="complemento" name="complemento" value="" 
-                                class="form-control" required>
+                              <input type="text" id="complemento" name="complemento" class="form-control">
                             </div>
 
                             <div class="form-group col-md-6"></div>
@@ -123,7 +122,6 @@
 
                             <div class="w-100"><hr></div>
                             
-
                             <div class="form-group col-md-6">
                               <label for="Primer_Apellido">Primer Apellido:</label>
                               <input type="text" id="Primer_Apellido" name="Primer_Apellido"
@@ -133,19 +131,19 @@
                             <div class="form-group col-md-6">
                               <label for="Primer_Nombre">Primer Nombre:</label>
                               <input type="text" id="Primer_Nombre" name="Primer_Nombre"
-                                      class="form-control">
+                                      class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Segundo_Apellido">Segundo Apellido:</label>
                               <input type="text" id="Segundo_Apellido" name="Segundo_Apellido"
-                                      class="form-control">
+                                      class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="Segundo_Nombre">Segundo Nombre:</label>
                               <input type="text" id="Segundo_Nombre" name="Segundo_Nombre"
-                                      class="form-control">
+                                      class="form-control" required>
                             </div>
 
                             <div class="form-group col-md-6 date" id='divMiCalendario'>
@@ -165,7 +163,7 @@
 
                             <div class="form-group col-md-6">
                               <label for="Estado_Civil">Estado Civil:</label>
-                              <select id="Estado_Civil" name="Estado_Civil" class="custom-select mr-sm-2">
+                              <select id="Estado_Civil" name="Estado_Civil" class="custom-select mr-sm-2" required>
                                 <option value="" selected>Seleccione el Estado Civil...</option>
                                 <option value="1">SOLTERO</option>
                                 <option value="2">CASADO</option>
@@ -205,7 +203,7 @@
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="Tipo_Trabajo">Modalidad de Trabajo como Médico Tradicional:</label>
-                              <select id="Tipo_Trabajo" name="Tipo_Trabajo" class="custom-select mr-sm-2">
+                              <select id="Tipo_Trabajo" name="Tipo_Trabajo" class="custom-select mr-sm-2" required>
                                 <option value="" selected>Seleccione la modalidad de trabajo...</option>
                                 <option value="1">AMBULANTE</option>
                                 <option value="2">FIJO</option>

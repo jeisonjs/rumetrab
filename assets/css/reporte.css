@@ -237,11 +237,7 @@ border: blue 2px solid;
 }
 
 @media print {
-  input, .title {
+  .jumbotron {
     display: none;
-  }
-
-  .right {
-    border: none;
   }
 }

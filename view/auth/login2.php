@@ -104,7 +104,7 @@
           </div>
         </div>
         <div class="col-lg-6 col-right d-none d-lg-flex">
-          <img src="imagenes/r2.svg" alt="...">
+          <img src="imagenes/r3.svg" alt="...">
         </div>
       </div>
     </div>

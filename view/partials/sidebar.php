@@ -49,8 +49,7 @@
                 </a>
               </li>
               <li>
-              <li>
-                <a href="?p=contacto">
+                <a href="#">
                   <i class="nc-icon nc-spaceship"></i>
                   <p>Reportes</p>
                 </a>
@@ -110,8 +109,7 @@
                 </a>
               </li>
               <li>
-              <li>
-                <a href="?p=contacto">
+                <a href="#">
                   <i class="nc-icon nc-spaceship"></i>
                   <p>Reportes</p>
                 </a>

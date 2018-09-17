@@ -71,5 +71,16 @@ class TerritorialDistributionController
 
         return $municipios;
     }
+
+
+    public function showAllDepartaments()
+    {
+        $TerritorialDistributionDao = new \App\Models\Dao\TerritorialDistributionDao;
+        $result = $TerritorialDistributionDao->getAllDepartaments();
+
+        foreach ($result as $item) {
+            echo "<option value=".$item['id'].">".$item['name']."</option>";
+        }
+    }
 }
 

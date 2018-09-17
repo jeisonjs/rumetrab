@@ -88,8 +88,8 @@ if(isset($_POST['create_pdf'])){
       </tr>
       <tr>
         <td><b>Sub Especialidad:</b></td>
-        <td  >'.$user['SubEspecialidad'].'</td>
-         <td class="linea" ></td>
+        <td>'.$user['SubEspecialidad'].'</td>
+        <td class="linea" ></td>
       </tr>
       <tr>
         <td><b>Departamento:</b></td>
@@ -97,7 +97,7 @@ if(isset($_POST['create_pdf'])){
         <td class="linea" ></td>
       </tr>
       <tr>
-        <td  VALIGN="MIDDLE" class="firma">.............................<br/> Firma del Interesado</td>
+        <td  VALIGN="MIDDLE" class="firma"><br/></td>
         <td ><b>Nro. Matricual:</b></td>
         <td >'.$user['Numero_Documento'].'-'.$user['Detalle'].'-'.$user['Seq_Registro'].'</td>
 
@@ -108,8 +108,8 @@ if(isset($_POST['create_pdf'])){
           <img src="imagenes/rum.svg" />
         </td>
         <td class="linea" ></td>
-        <td>VICEMINISTRO DE MEDICINA<br/>TRADICIONAL E INTERCULTURALIDAD </td>
-        <td>JEFE DE RECURSOS HUMANOS<br/>MINISTERIO DE SALUD</td>
+        <td>VICEMINISTRO DE MEDICINA<br/>TRADICIONAL E INTERCULTURALIDAD</td>
+        <td>DIRECTOR DE MEDICINA<br/>TRADICIONAL Y DESARROLLO INTERCULTURAL</td>
       </tr> 
 	';	
   }
@@ -136,6 +136,7 @@ $stilo = array(
 
 <head>
   <meta charset="utf-8">
+  <title>Matrícula Nacional de Registros</title>
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -152,7 +153,8 @@ $stilo = array(
       <form method="post">
         <input type="hidden" name="reporte_name" value="<?php echo $h1; ?>">
         <p class="pt-1">
-          <input type="submit" name="create_pdf" class="btn btn-danger" src="imagenes/escudo.png" value="Enviar Matricula a PDF">
+          <!-- <input type="submit" name="create_pdf" class="btn btn-danger" src="imagenes/escudo.png" value="Enviar Matricula a PDF"> -->
+          <button class="btn btn-danger" onclick="window.print();">Enviar Matricula a PDF</button>
         </p>
       </form>
     </div>
@@ -173,7 +175,7 @@ $stilo = array(
       </tr>
       <tr>
         <td colspan="3" class="title-registro">
-          <img src="imagenes/Matric.svg" />
+          <img src="imagenes/Matric2.svg" />
         </td>
       </tr>
       <tr>
@@ -188,7 +190,7 @@ $stilo = array(
                         echo ", ";
                         echo date("d-m-Y"); ?>
         </td>
-        <td rowspan="8" align="right">
+        <td rowspan="5" align="right">
           <?php
             $Datosqr=$user['Primer_Nombre'].' '.$user['Segundo_Nombre'].' '.$user['Primer_Apellido'].' '.$user['Segundo_Apellido'].''.$user['Numero_Documento'].''.$user['Especialedad'].''.$user['Departamento'].''.$user['Numero_Documento'].''.date("d-m-Y");
             $fec= date("d-m-Y");
@@ -228,9 +230,9 @@ $stilo = array(
         </td>
       </tr>
       <tr>
-        <td><b>Sub Especialidad:</b></td>
+        <!-- <td><b>Sub Especialidad:</b></td> -->
         <td>
-          <?php echo $user['SubEspecialidad']?>
+          <!-- <?php echo $user['SubEspecialidad']?> -->
         </td>
       </tr>
       <tr>
@@ -242,21 +244,18 @@ $stilo = array(
       <tr>
         <td><b>Nro. Matricual:</b></td>
         <td>
-          <?php echo $user['Numero_Documento'] ?>-
           <?php echo $user['Detalle']?>-
-          <?php echo $user['Seq_Registro']; ?>
+          <?php echo $user['Seq_Registro'];?>-
+          <?php echo $user['Numero_Documento'] ?>
         </td>
-      </tr>
-      <tr>
-        <td class="firma">.............................<br /> Firma del Interesado</td>
       </tr>
       <tr class="second">
         <td colspan="3" class="title-footer">
           <img src="imagenes/rum.svg" />
           <!-- Registro único de Medicina Tradicional Ancestral Boliviana -->
         </td>
-        <td>VICEMINISTRO DE MEDICINA<br />TRADICIONAL E INTERCULTURALIDAD </td>
-        <td>JEFE DE RECURSOS HUMANOS<br />MINISTERIO DE SALUD</td>
+        <td>VICEMINISTRO DE MEDICINA<br/>TRADICIONAL E INTERCULTURALIDAD</td>
+        <td>DIRECTOR DE MEDICINA<br/>TRADICIONAL Y DESARROLLO INTERCULTURAL</td>
       </tr>
       <?php } ?>
       </table>

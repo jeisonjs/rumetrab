@@ -1,9 +1,7 @@
 
-MEDICINA_TRADICIONAL.xlsx
-complementos rume.docx
-edit.php
-observaciones RUMETRAB.docx
-observaciones RUMETRAB.pdf
+# Ignore all docs
+docs/*.xlsx
+docs/*.docx
+docs/*.php
+docs/*.pdf
 options.md
-comunidades.pdf
-municipios-Bolivia.pdf

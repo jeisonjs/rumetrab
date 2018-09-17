@@ -80,10 +80,14 @@
                               <img src="imagenes/print.png">Mostrar Matricula
                             </a>
                           </td>
+                          <td>
+                            <a href="?c=Registro&amp;a=Eliminar&amp;Seq_Registro=<?php echo $r->Seq_Registro; ?>"
+                              class="badge badge-danger p-1">
+                              Eliminar
+                            </a>
+                            <!-- <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Alumno&a=Eliminar&id=<?php echo $r->id; ?>">Eliminar</a> -->
+                          </td>
                           <?php endif; ?>
-                          <!--<td>
-                            <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Alumno&a=Eliminar&id=<?php echo $r->id; ?>">Eliminar</a>
-                          </td>-->
                         </tr>
                       <?php endforeach; ?>
                     </tbody>

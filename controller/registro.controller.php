@@ -202,7 +202,7 @@ class RegistroController{
         $result = $td->getAllDepartaments();
         
         header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($result); die();
+        echo json_encode($result);
     }
 
     public function getProvinceByDepartament()
@@ -213,7 +213,7 @@ class RegistroController{
         $result = $td->getProvinceByDepartament($departamento_id);
 
         header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($result); die();
+        echo json_encode($result);
     }
  
     public function getMunicipioByProvince()
@@ -224,7 +224,7 @@ class RegistroController{
         $result = $td->getMunicipioByProvince($provincia_id);
 
         header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($result); die();
+        echo json_encode($result);
     }
 
     public function Crud(){
@@ -245,9 +245,11 @@ class RegistroController{
         
         if(isset($_REQUEST['Seq_Registro'])){
             $alm = $this->model->Obtener($_REQUEST['Seq_Registro']);
-
-            $td     = new \App\Controllers\TerritorialDistributionController();
+            
+            $td = new \App\Controllers\TerritorialDistributionController();
             $departamentos = $td->getAllDepartaments();
+            $provincias    = $td->getProvinceByDepartament($alm->Departamento_Seq);
+            $municipios    = $td->getMunicipioByProvince($alm->Provincia_Seq);
         }
         
         // require_once 'view/header.php';
@@ -264,7 +266,7 @@ class RegistroController{
         $result = $td->getRegister($register_id);
 
         header("Content-Type: application/json; charset=UTF-8");
-        echo json_encode($result); die();
+        echo json_encode($result);
     }
 
     public function Imagen(){

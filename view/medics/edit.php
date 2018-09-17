@@ -39,21 +39,51 @@
                               <div class="form-group col-md-6">
                                 <label for="CboDepartamento">Departamento:</label>
                                 <select id="CboDepartamento" name="Departamento_Seq" class="custom-select mr-sm-2" required>
-                                  <option value="" selected>Seleccione Departamento...</option>
+                                  <option value="">Seleccione Departamento...</option>
+                                  <?php
+                                    foreach ($departamentos as $item) {
+                                      $pr = '';
+                                      $pr .= "<option value='$item->Seq_Departamento'";
+                                      $pr .= $alm->Departamento_Seq == $item->Seq_Departamento ? ' selected' : '';
+                                      $pr .= ">$item->Nombre</option>";
+                                      
+                                      echo $pr;
+                                    }
+                                  ?>
                                 </select>
                               </div>
 
                               <div class="form-group col-md-6">
                                 <label for="CboProvincia">Provincia:</label>
                                 <select id="CboProvincia" name="Provincia_Seq" class="custom-select mr-sm-2">
-                                  <option value="" selected>Seleccione Provincia...</option>
+                                  <option value="">Seleccione Provincia...</option>
+                                  <?php
+                                    foreach ($provincias as $item) {
+                                      $pr = '';
+                                      $pr .= "<option value='$item->id'";
+                                      $pr .= $alm->Provincia_Seq == $item->id ? ' selected' : '';
+                                      $pr .= ">$item->nombre</option>";
+                                      
+                                      echo $pr;
+                                    }
+                                  ?>
                                 </select>
                               </div>
 
                               <div class="form-group col-md-6">
                                 <label for="CboMunicipios">Municipio:</label>
                                 <select id="CboMunicipios" name="Municipio_Seq" class="custom-select mr-sm-2">
-                                  <option value="0" selected>Seleccione Municipio...</option>
+                                  <option value="0">Seleccione Municipio...</option>
+                                  <?php
+                                    foreach ($municipios as $item) {
+                                      $pr = '';
+                                      $pr .= "<option value='$item->Seq_Municipio'";
+                                      $pr .= $alm->Municipio_Seq == $item->Seq_Municipio ? ' selected' : '';
+                                      $pr .= ">$item->Nombre</option>";
+                                      
+                                      echo $pr;
+                                    }
+                                  ?>
                                 </select>
                               </div>
 
@@ -543,8 +573,6 @@
 
   $(document).ready(function () {
 
-    var self = this;
-
     $('#Fecha_Nacimiento').daterangepicker({
       singleDatePicker: true,
       showDropdowns: true,
@@ -563,99 +591,105 @@
       }
     });
 
-    obtenerRegistro();
-    cargar_Departamento();
-        
-    var self = this,
-        departamento_id,
-        provincia_id,
-        municipio_id;
+    $("#CboDepartamento").change(function () {
+      dependencia_Provincia();
+    });
+
+    $("#CboProvincia").change(function () {
+      dependencia_Municipio();
+    });
+
+    $("#CboEspecialidad").change(function () {
+      dependencia_SubEspe();
+    });
 
   });
 
-  function obtenerRegistro() {
-    var code = $("#Seq_Registro").val();
-    
-    $.get("?c=Registro&a=getRegister", {
-        code: code
-      },
-      function (resultado) {
-
-      self.departamento_id = resultado.Departamento_Seq;
-      self.provincia_id    = resultado.Provincia_Seq;
-      self.municipio_id    = resultado.Municipio_Seq;
-            
-    });
-  }
-
   function cargar_Departamento() {
     $.get("?c=Registro&a=getAllDepartaments", function (resultado) {
-
-      var departament_html = '',
-          code = $("#Seq_Registro").val();
+      var departament_html = '<option value="">Seleccione Departamento...</option>';
 
       $.each(resultado, function(clave, valor) {
         departament_html += `
-          <option value="${valor.Seq_Departamento}" ${ self.departamento_id == valor.Seq_Departamento ? 'selected' : '' }>
-            ${valor.Nombre}
-          </option>
+          <option value="${valor.Seq_Departamento}">${valor.Nombre}</option>
         `;
       });
 
-      dependencia_Provincia();
-
       // Insertando la lista de departamentos.
-      $("#CboDepartamento").append(departament_html);
+      $("#CboDepartamento").empty().append(departament_html);
       
+      dependencia_Provincia();
     });
   }
 
   function dependencia_Provincia() {
 
+      code = $("#CboDepartamento").val();
       $.get("?c=Registro&a=getProvinceByDepartament", {
-          code: self.departamento_id
+          code: code
         },
         function (resultado) {
-          
-          var province_html = '';
+          var province_html = '<option value="">Seleccione Provincia...</option>';
 
           $.each(resultado, function(clave, valor) {
             province_html += `
-              <option value="${valor.id}" ${ self.provincia_id == valor.id ? 'selected' : '' }>
-                ${valor.nombre}
-              </option>
+              <option value="${valor.id}">${valor.nombre}</option>
             `;
           });
 
-          dependencia_Municipio();
-
           // Insertando la lista de provincias.
-          $("#CboProvincia").append(province_html);
-        }
+          $("#CboProvincia").empty().append(province_html);
 
+          dependencia_Municipio();
+        }
       );
     }
 
     function dependencia_Municipio() {
       
+      code = $("#CboProvincia").val();
       $.get("?c=Registro&a=getMunicipioByProvince", {
-        code: self.provincia_id 
+        code: code 
       }, function (resultado) {
-        
-        var municipio_html = '';
+        var municipio_html = '<option value="0">Seleccione Municipio...</option>';
 
         $.each(resultado, function(clave, valor) {
           municipio_html += `
-            <option value="${valor.Seq_Municipio}" ${ self.municipio_id == valor.Seq_Municipio ? 'selected' : '' }>
-              ${valor.Nombre}
-            </option>
+            <option value="${valor.Seq_Municipio}">${valor.Nombre}</option>
           `;
         });
 
         // Insertando la lista de municipios.
-        $('#CboMunicipios').append(municipio_html);
+        $('#CboMunicipios').empty().append(municipio_html);
         
       });
+    }
+
+    function cargar_Especialidad() {
+      $.get("controller/cargar-Especialidad.php", function (resultado) {
+        if (resultado == false) {
+          alert("Error");
+        } else {
+          $('#CboEspecialidad').empty().append(resultado);
+        }
+      });
+    }
+
+    function dependencia_SubEspe() {
+      var code = $("#CboEspecialidad").val();
+      $.get("controller/dependencia-SubEspecialidad.php", {
+          code: code
+        },
+        function (resultado) {
+          if (resultado == false) {
+            alert("Error");
+          } else {
+            $("#CboSubEspecialidad").attr("disabled", false);
+            document.getElementById("CboSubEspecialidad").options.length = 1;
+            $('#CboSubEspecialidad').empty().append(resultado);
+          }
+        }
+      );
     }
 
 </script>
