@@ -5,3 +5,4 @@ docs/*.docx
 docs/*.php
 docs/*.pdf
 options.md
+temp/

@@ -311,7 +311,6 @@ class RegistroController{
     }
 
     public function Guardar(){
-        
         $alm = new Registro();
         
         $alm->Seq_Registro = $_REQUEST['Seq_Registro'];
@@ -328,6 +327,7 @@ class RegistroController{
         $alm->Segundo_Apellido= $_REQUEST['Segundo_Apellido'];  
         $alm->Tipo_Documento= $_REQUEST['Tipo_Documento'];
         $alm->Numero_Documento= $_REQUEST['Numero_Documento'];
+        $alm->complemento= $_REQUEST['complemento'];
         $alm->Expedido= $_REQUEST['Expedido'];
         $alm->Estado_Civil= $_REQUEST['Estado_Civil'];     
         $alm->Sexo= $_REQUEST['Sexo'];
@@ -365,8 +365,8 @@ class RegistroController{
         $alm->Numero_Pacientes= $_REQUEST['Numero_Pacientes'];
         $alm->Codigo_Formulario= $_REQUEST['Codigo_Formulario'];
         $alm->Fecha_Formulario= date('Y-m-d', strtotime($_REQUEST['Fecha_Formulario']));
-        $alm->HoraRegistro_Formulario= $_REQUEST['HoraRegistro_Formulario'];
-        $alm->FechaRegistro_Formulario= $_REQUEST['FechaRegistro_Formulario'];
+        $alm->HoraRegistro_Formulario  = isset($_REQUEST['HoraRegistro_Formulario']) ? $_REQUEST['HoraRegistro_Formulario'] : date(" H:i:s ",time()-3909600) ;
+        $alm->FechaRegistro_Formulario = isset($_REQUEST['FechaRegistro_Formulario']) ? $_REQUEST['FechaRegistro_Formulario'] : date(" d-m-Y ", time()) ;
         $alm->Certificado_Naci= 1; //$_REQUEST['Certificado_Naci'];
         
         

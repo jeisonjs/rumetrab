@@ -1,0 +1,1 @@
+ALTER TABLE `sys_registro` ADD `complemento` VARCHAR(255) NULL AFTER `Numero_Documento`;

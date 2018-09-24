@@ -153,6 +153,12 @@
                                       class="form-control" required>
                               </div>
 
+                              <!-- <div class="form-group col-md-6">
+                                <label for="complemento">Complemento:</label>
+                                <input type="text" id="complemento" name="complemento" value="<?php echo $alm->complemento; ?>"
+                                       class="form-control">
+                              </div> -->
+
                               <div class="form-group col-md-3">
                                 <label for="CboDepCI">Expedido:</label>
                                 <select id="CboDepCI" name="Expedido" class="custom-select mr-sm-2" required>

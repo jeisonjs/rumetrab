@@ -20,6 +20,7 @@ class Registro
 	public $Segundo_Apellido;
 	public $Tipo_Documento;
 	public $Numero_Documento;
+	public $complemento;
 	public $Expedido;
 	public $Fecha_Nacimiento;
 	public $Estado_Civil;
@@ -226,6 +227,7 @@ class Registro
                         Segundo_Apellido = ?,
                         Tipo_Documento = ?,
                         Numero_Documento = ?,
+						complemento = ?,
                         Expedido = ?,
                         Estado_Civil = ?,
 						Sexo             = ?, 
@@ -279,6 +281,7 @@ class Registro
 						$data->Segundo_Apellido,
 						$data->Tipo_Documento,
 					    $data->Numero_Documento,
+					    $data->complemento,
 					    $data->Expedido,
 					    $data->Estado_Civil,
 						$data->Sexo,
@@ -331,7 +334,7 @@ class Registro
                 INSERT INTO sys_registro 
                     (Departamento_Seq, Provincia_Seq, Municipio_Seq, Comunidad, Organizacion_Pertenece, 
                     Especialedad_Seq, SubEspecialidad_Seq, Primer_Nombre, Segundo_Nombre, Primer_Apellido, 
-                    Segundo_Apellido, Tipo_Documento, Numero_Documento, Expedido, Estado_Civil, Sexo, 
+                    Segundo_Apellido, Tipo_Documento, Numero_Documento, complemento, Expedido, Estado_Civil, Sexo, 
                     Fecha_Nacimiento, Castellano, Lee, Escribe, Quechua, EscribeQ, Aymara, LeeA, EscribeA, 
                     Guarani, LeeG, EscribeG, Otro, LeeO, EscribeO, Descripcion_idiomaO, Direccion_vive, Telefono, 
                     Celular, Tipo_Trabajo, Direccion_Trabajo, Anos_Experiencia_Especialidad, 
@@ -339,7 +342,7 @@ class Registro
                     HoraRegistro_Formulario, FechaRegistro_Formulario, Lee_Quechua, Certificado_Naci, 
                     FechaRegistro_Servidor) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ";
 
 		$this->pdo->prepare($sql)
@@ -358,6 +361,7 @@ class Registro
 					$data->Segundo_Apellido,
 					$data->Tipo_Documento,
 					$data->Numero_Documento,
+					$data->complemento,
 					$data->Expedido,
 					$data->Estado_Civil,
 					$data->Sexo,

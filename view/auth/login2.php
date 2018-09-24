@@ -68,7 +68,7 @@
                 <div class="form">
                   <div class="form-group">
                     <label for="inputEmail4">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="caja1" name="NUsuario" placeholder="Usuario" required>
+                    <input type="text" class="form-control" id="caja1" name="NUsuario" placeholder="Usuario" required autofocus>
                   </div>
 
                   <div class="form-group">

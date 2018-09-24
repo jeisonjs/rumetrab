@@ -116,7 +116,7 @@
                             <div class="form-group col-md-6 mt-4">
                               <label for="CboDepCI">Documento expedido en:</label>
                               <select id="CboDepCI" name="Expedido" class="custom-select mr-sm-2" required>
-                                <option value="" selected>Seleccione...</option>
+                                <!-- <option value="" selected>Seleccione...</option> -->
                               </select>
                             </div>
 
@@ -465,7 +465,7 @@
                         </div>
                         <div class="card-body">
 
-                          <div class="form-row">
+                          <div class="form-row"> 
                             <div class="form-group col-md-6">
                               <label for="HoraRegistro_Formulario">Hora de Formulario:</label>
                               <input type="text" id="HoraRegistro_Formulario" name="HoraRegistro_Formulario" 
@@ -550,7 +550,7 @@
     function cargar_Departamento() {
       $.get("?c=Registro&a=getAllDepartaments", function (resultado) {
 
-        var departament_html = '';
+        var departament_html = '<option value="" selected>Seleccione Departamento...</option>';
 
         $.each(resultado, function(clave, valor) {
           departament_html += `
@@ -559,8 +559,8 @@
         });
 
         // Insertando la lista de departamentos.
-        $("#CboDepartamento").append(departament_html);
-        $("#CboDepCI").append(departament_html);
+        $("#CboDepartamento").empty().append(departament_html);
+        $("#CboDepCI").empty().append(departament_html);
         
       });
     }
@@ -579,7 +579,7 @@
             $("#CboProvincia").attr("disabled", false);
             document.getElementById("CboProvincia").options.length = 1;
 
-            var province_html = '';
+            var province_html = '<option value="" selected>Seleccione Provincia...</option>';
 
             $.each(resultado, function(clave, valor) {
               province_html += `
@@ -588,7 +588,7 @@
             });
 
             // Insertando la lista de provincias.
-            $("#CboProvincia").append(province_html);
+            $("#CboProvincia").empty().append(province_html);
           }
         }
 
@@ -607,7 +607,7 @@
           $("#CboMunicipios").attr("disabled", false);
           document.getElementById("CboMunicipios").options.length = 1;
           
-          var municipio_html = '';
+          var municipio_html = '<option value="" selected>Seleccione Municipio...</option>';
 
           $.each(resultado, function(clave, valor) {
             municipio_html += `
@@ -616,7 +616,7 @@
           });
 
           // Insertando la lista de municipios.
-          $('#CboMunicipios').append(municipio_html);
+          $('#CboMunicipios').empty().append(municipio_html);
         }
       });
 
